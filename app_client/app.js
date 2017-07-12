@@ -1,6 +1,7 @@
 angular.module('loc8rApp', [
   'ui.router',
-  'ngSanitize'
+  'ngSanitize',
+  'ui.bootstrap'
 ]).config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('home', {
