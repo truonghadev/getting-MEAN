@@ -1,6 +1,6 @@
 angular.module('loc8rApp', [
   'ui.router'
-]).config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+]).config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('home', {
       url: '/',
@@ -8,4 +8,5 @@ angular.module('loc8rApp', [
       controller: 'HomeController'
     });
   $urlRouterProvider.otherwise('/');
+  $locationProvider.html5Mode(true);
 }])
