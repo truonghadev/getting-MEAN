@@ -109,9 +109,59 @@ module.exports = {
     }
   },
   locationsUpdateOne: function(req, res) {
-    sendJsonResponse(res, 200, {'status': 'success'});
+    if (req.params && req.params.locationId) {
+      Loc.findById(req.params.locationId)
+        .select('-reviews -rating')
+        .exec(function(err, location) {
+          location.name = req.body.name;
+          location.address = req.body.address;
+          location.facilities = req.body.facilities.split(', ');
+          location.coords = [
+            parseFloat(req.body.lng),
+            parseFloat(req.body.lat)
+          ];
+          location.openingTimes = [{
+              "days" : req.body.day1,
+              "opening" : req.body.opening1,
+              "closing" : req.body.closing1,
+              "closed" : req.body.closed1
+            },{
+              "days" : req.body.day2,
+              "opening" : req.body.opening2,
+              "closing" : req.body.closing2,
+              "closed" : req.body.closed2
+            },{
+              "days" : req.body.day3,
+              "opening" : req.body.opening3,
+              "closing" : req.body.closing3,
+              "closed" : req.body.closed3
+            }
+          ];
+          location.save(function(err, loc) {
+            if (err) {
+              sendJsonResponse(res, 404, err);
+            } else {
+              sendJsonResponse(res, 200, loc);
+            }
+          });
+        });
+    } else {
+      sendJsonResponse(res, 404, {message: 'No locationId in request'})
+    }
   },
   locationsDeleteOne: function(req, res) {
-    sendJsonResponse(res, 200, {'status': 'success'});
+    if (req.params && req.params.locationId) {
+      Loc.findByIdAndRemove(req.params.locationId)
+      // .select('name reviews')
+      .exec(function(err, location) {
+        if (!err) {
+          sendJsonResponse(res, 404, err);
+        } else{
+          sendJsonResponse(res, 204, null);
+        }
+      });
+    } else {
+      sendJsonResponse(res, 404, {message: 'No locationId in request'});
+    }
   }
 };
