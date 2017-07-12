@@ -25,7 +25,9 @@ var readFile = function(filepath) {
 
 var appClientFiles = {
   'app.js': readFile('app_client/app.js'),
-  'home.controller.js': readFile('app_client/home/home.controller.js')
+  'home.controller.js': readFile('app_client/home/home.controller.js'),
+  'about.controller.js': readFile('app_client/about/about.controller.js'),
+  'about.service.js': readFile('app_client/about/about.service.js')
 };
 
 var uglified = uglifyJs.minify(appClientFiles, { compress: false });
