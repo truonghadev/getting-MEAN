@@ -163,5 +163,15 @@ module.exports = {
     } else {
       sendJsonResponse(res, 404, {message: 'No locationId in request'});
     }
+  },
+  locationsList: function(req, res) {
+    Loc.find({})
+      .exec(function(err, locations) {
+        if (err) {
+          sendJsonResponse(res, 400, err);
+          return;
+        }
+        sendJsonResponse(res, 200, locations);
+      });
   }
 };

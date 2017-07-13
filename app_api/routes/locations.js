@@ -4,17 +4,17 @@ const locationsCtrl = require('../controllers/locations');
 const reviewsCtrl = require('../controllers/reviews');
 
 // locations
-router.get('/locations', locationsCtrl.locationsListByDistance);
-router.post('/locations', locationsCtrl.locationsCreate);
-router.get('/locations/:locationId', locationsCtrl.locationsReadOne);
-router.put('/locations/:locationId', locationsCtrl.locationsUpdateOne);
-router.delete('/locations/:locationId', locationsCtrl.locationsDeleteOne);
+router.get('/', locationsCtrl.locationsList);
+router.post('', locationsCtrl.locationsCreate);
+router.get('/:locationId', locationsCtrl.locationsReadOne);
+router.put('/:locationId', locationsCtrl.locationsUpdateOne);
+router.delete('/:locationId', locationsCtrl.locationsDeleteOne);
 
 // reviews
-router.post('/locations/:locationId/reviews', reviewsCtrl.reviewsCreate);
-router.get('/locations/:locationId/reviews/:reviewId', reviewsCtrl.reviewsReadOne);
-router.put('/locations/:locationId/reviews/:reviewId', reviewsCtrl.reviewsUpdateOne);
-router.delete('/locations/:locationId/reviews/:reviewId', reviewsCtrl.reviewsDeleteOne);
+router.post('/:locationId/reviews', reviewsCtrl.reviewsCreate);
+router.get('/:locationId/reviews/:reviewId', reviewsCtrl.reviewsReadOne);
+router.put('/:locationId/reviews/:reviewId', reviewsCtrl.reviewsUpdateOne);
+router.delete('/:locationId/reviews/:reviewId', reviewsCtrl.reviewsDeleteOne);
 
 
 module.exports = router;
