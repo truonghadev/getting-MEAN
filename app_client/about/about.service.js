@@ -17,7 +17,10 @@
       function getReiviews() {
         return httpAsPromise({
           method: 'GET',
-          url: '/api/locations/59663efe2fe8af4c2826f7e6'
+          url: '/api/locations/595f4fbb2e61088a9a009288',
+          headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTY2ZTljODYxNjc1NTc4MmViZDZhZjUiLCJlbWFpbCI6InRydW9uZy5oYS5kZXZAZ21haWwuY29tIiwibmFtZSI6IlRydW9uZyBIYSIsImV4cCI6MTUwMDUzMjc5NCwiaWF0IjoxNDk5OTI3OTk0fQ.RUo6ZEeXQdhGqdq4uFjlXS13LSTAdcTe_Xo_u7D8R4o'
+          }
         });
       }
 

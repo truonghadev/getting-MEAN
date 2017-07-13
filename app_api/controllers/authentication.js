@@ -42,7 +42,6 @@ function login(req, res) {
     }
     var token;
     if (user) {
-      console.log(user);
       token = user.generateJwt();
       sendJsonResponse(res, 200, {token: token});
     } else {
